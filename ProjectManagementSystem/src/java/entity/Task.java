@@ -22,6 +22,8 @@ public class Task {
     private String description;
     private String level;
 
+    public Task() {}
+    
     public Task(int id, Staff taskAssined, int parentId, String name, boolean status, Date createDate, Date dueDate, Date completeDate, String description, String level) {
         this.id = id;
         this.taskAssined = taskAssined;
@@ -49,6 +51,9 @@ public class Task {
 
     public void setTaskAssined(Staff taskAssined) {
         this.taskAssined = taskAssined;
+    }
+    public void setTaskAssined() {
+        this.taskAssined = null;
     }
 
     public int getParentId() {
@@ -115,5 +120,19 @@ public class Task {
         this.level = level;
     }
     
-    
+@Override
+public String toString() {
+    return "Task{" +
+           "id=" + id +
+           ", name='" + name + '\'' +
+           ", assignedTo=" + (taskAssined != null ? taskAssined.getId(): "null") +
+           ", parentId=" + parentId +
+           ", status=" + (status ? "Đã hoàn thành" : "Chưa hoàn thành") +
+           ", createDate=" + createDate +
+           ", dueDate=" + dueDate +
+           ", completeDate=" + completeDate +
+           ", description='" + description + '\'' +
+           ", level='" + level + '\'' +
+           '}';
+}
 }
