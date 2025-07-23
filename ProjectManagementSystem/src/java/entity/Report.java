@@ -4,6 +4,7 @@
  */
 package entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -33,6 +34,10 @@ public class Report {
         this.overdueDate = overdueDate;
         this.createdAt = createdAt;
         this.status = status;
+    }
+
+    public Report(int aInt, User user, java.sql.Date date, java.sql.Date date0, int aInt0, int aInt1, int aInt2, Timestamp timestamp, boolean aBoolean) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getId() {
