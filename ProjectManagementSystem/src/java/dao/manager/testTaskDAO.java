@@ -17,7 +17,7 @@ public class testTaskDAO {
         try (Connection conn = SQLServerConnection.getConnection()) {
             taskDAO taskDAO = new taskDAO(conn);
             Task t = taskDAO.getTaskById(1);
-            System.out.println(t.toString());
+            System.out.println(t.toString()+"aaaaaaaaaaaaaaaaa");
 
         }
         catch (Exception e) {
