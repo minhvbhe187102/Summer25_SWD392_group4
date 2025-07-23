@@ -7,7 +7,9 @@ package controller.manager;
 
 import dao.JSBC_M.SQLServerConnection;
 import dao.manager.taskDAO;
+import entity.Staff;
 import entity.Task;
+import entity.TaskTopic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -18,13 +20,40 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.sql.Date;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 /**
  *
  * @author zeus
  */
 @WebServlet(name="addTask", urlPatterns={"/addTask"})
+
 public class addTask extends HttpServlet {
+    
+    public boolean isPositionMatchingAnyTaskTopic(Staff staff) {
+    try {
+        // 1. Lấy danh sách Task của staff đó
+        // Kết nối
+        Connection conn = SQLServerConnection.getConnection();
+        //StaffDAO staffDAO = new StaffDAO(conn);
+        taskDAO taskDAO = new taskDAO(conn);
+        ArrayList<Task> tasks = null;// taskDAO.getTasksByStaffId(staff.getId()); // bạn cần có hàm này
+
+        // 2. Duyệt từng task
+        for (Task task : tasks) {
+            ArrayList<TaskTopic> topics = task.getTaskTopic(); // đảm bảo task có chứa topic (đã được set)
+
+            for (TaskTopic topic : topics) {
+                if (staff.getPosition().equalsIgnoreCase(topic.getName())) {
+                    return true; // Tìm thấy khớp
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return false; // Không tìm thấy khớp
+}
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -88,6 +117,10 @@ public class addTask extends HttpServlet {
         String description = request.getParameter("description");
         String level = request.getParameter("level");
 
+        
+        
+        
+        
         // Kết nối
         Connection conn = SQLServerConnection.getConnection();
         //StaffDAO staffDAO = new StaffDAO(conn);

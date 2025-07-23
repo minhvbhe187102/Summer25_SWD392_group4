@@ -51,6 +51,37 @@ public class taskTopicDAO {
     return list;
 }
     
+    public ArrayList<TaskTopic> getTopicsByTaskId(int taskId) {
+    ArrayList<TaskTopic> list = new ArrayList<>();
+    String sql = """
+        SELECT tt.* 
+        FROM TaskTopicMapping m 
+        JOIN TaskTopic tt ON m.topic_id = tt.topic_id 
+        WHERE m.task_id = ?
+    """;
+
+    try (Connection con = SQLServerConnection.getConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+
+        ps.setInt(1, taskId);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            TaskTopic topic = new TaskTopic();
+            topic.setId(rs.getInt("topic_id"));
+            topic.setName(rs.getString("name"));
+            topic.setDescription(rs.getString("description"));
+            topic.setStatus(rs.getBoolean("status"));
+            list.add(topic);
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return list;
+}
+    
     public List<TaskTopic> getAllTopics() {
         List<TaskTopic> list = new ArrayList<>();
         String sql = "SELECT * FROM TaskTopic";

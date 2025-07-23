@@ -33,6 +33,10 @@ public class TaskTopic {
         this.tasks = null;
     }
 
+    public TaskTopic() {
+        
+    }
+
     public int getId() {
         return id;
     }

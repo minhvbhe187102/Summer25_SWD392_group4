@@ -4,6 +4,7 @@
  */
 package entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,7 +22,7 @@ public class Task {
     private Date completeDate;
     private String description;
     private String level;
-
+    private ArrayList<TaskTopic> taskTopic;
     public Task() {}
     
     public Task(int id, Staff taskAssined, int parentId, String name, boolean status, Date createDate, Date dueDate, Date completeDate, String description, String level) {
@@ -36,6 +37,30 @@ public class Task {
         this.description = description;
         this.level = level;
     }
+
+    public Task(int id, Staff taskAssined, int parentId, String name, boolean status, Date createDate, Date dueDate, Date completeDate, String description, String level, ArrayList<TaskTopic> taskTopic) {
+        this.id = id;
+        this.taskAssined = taskAssined;
+        this.parentId = parentId;
+        this.name = name;
+        this.status = status;
+        this.createDate = createDate;
+        this.dueDate = dueDate;
+        this.completeDate = completeDate;
+        this.description = description;
+        this.level = level;
+        this.taskTopic = taskTopic;
+    }
+
+    public ArrayList<TaskTopic> getTaskTopic() {
+        return taskTopic;
+    }
+
+    public void setTaskTopic(ArrayList<TaskTopic> taskTopic) {
+        this.taskTopic = taskTopic;
+    }
+    
+    
 
     public int getId() {
         return id;

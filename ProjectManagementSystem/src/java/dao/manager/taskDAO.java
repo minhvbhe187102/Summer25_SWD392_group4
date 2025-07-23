@@ -12,6 +12,7 @@ package dao.manager;
 
 
 import entity.Task;
+import entity.TaskTopic;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,6 +45,49 @@ public class taskDAO {
             stmt.executeUpdate();
         }
     }
+    
+    public Task getTaskById2(int id) throws SQLException {
+    String sql = "SELECT * FROM Task WHERE task_id = ?";
+    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setInt(1, id);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            Task task = new Task();
+            task.setId(rs.getInt("task_id"));
+
+            // assignedTo có thể null
+            int assignedTo = rs.getInt("assigned_to");
+//            if (!rs.wasNull()) {
+//                StaffDAO staffDAO = new StaffDAO();
+//                Staff assignee = staffDAO.getStaffById(assignedTo);
+//                task.setTaskAssined(assignee);
+//            } else {
+                task.setTaskAssined(null);
+//            }
+
+            task.setParentId(rs.getInt("parent_id"));
+            task.setName(rs.getString("name"));
+            task.setStatus(rs.getBoolean("status"));
+            task.setCreateDate(rs.getDate("create_date"));
+            task.setDueDate(rs.getDate("due_date"));
+            task.setCompleteDate(rs.getDate("complete_date"));
+            task.setDescription(rs.getString("description"));
+            task.setLevel(rs.getString("level"));
+
+            // 🔗 Thêm các topic liên kết
+            taskTopicDAO topicDAO = new taskTopicDAO();
+            ArrayList<TaskTopic> topics = topicDAO.getTopicsByTaskId(id);
+            
+            task.setTaskTopic(topics);
+
+            return task;
+        }
+    }
+    return null;
+    }
+    
+    
     public Task getTaskById(int id) throws SQLException {
         String sql = "SELECT * FROM Task WHERE task_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
