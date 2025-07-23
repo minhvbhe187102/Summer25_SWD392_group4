@@ -25,6 +25,14 @@ public class TaskTopic {
         this.tasks = tasks;
     }
 
+    public TaskTopic(int id, String name, String description, boolean status) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.tasks = null;
+    }
+
     public int getId() {
         return id;
     }

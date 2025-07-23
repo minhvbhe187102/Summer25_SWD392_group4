@@ -4,7 +4,7 @@
  */
 package dao.manager;
 
-import dao.JSBC.SQLServerConnection;
+import dao.JSBC_M.SQLServerConnection;
 import entity.Task;
 import java.sql.Connection;
 import java.util.Date;
@@ -13,7 +13,7 @@ import java.util.Date;
  * @author zeus
  */
 public class testTaskDAO {
-     public static void main(String[] args) {
+     public static void main(String[] args) {   
         try (Connection conn = SQLServerConnection.getConnection()) {
             taskDAO taskDAO = new taskDAO(conn);
             Task t = taskDAO.getTaskById(1);
