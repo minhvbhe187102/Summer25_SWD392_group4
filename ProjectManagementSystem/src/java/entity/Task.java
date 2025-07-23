@@ -4,6 +4,7 @@
  */
 package entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -21,7 +22,9 @@ public class Task {
     private Date completeDate;
     private String description;
     private String level;
-
+    private ArrayList<TaskTopic> taskTopic;
+    public Task() {}
+    
     public Task(int id, Staff taskAssined, int parentId, String name, boolean status, Date createDate, Date dueDate, Date completeDate, String description, String level) {
         this.id = id;
         this.taskAssined = taskAssined;
@@ -34,6 +37,30 @@ public class Task {
         this.description = description;
         this.level = level;
     }
+
+    public Task(int id, Staff taskAssined, int parentId, String name, boolean status, Date createDate, Date dueDate, Date completeDate, String description, String level, ArrayList<TaskTopic> taskTopic) {
+        this.id = id;
+        this.taskAssined = taskAssined;
+        this.parentId = parentId;
+        this.name = name;
+        this.status = status;
+        this.createDate = createDate;
+        this.dueDate = dueDate;
+        this.completeDate = completeDate;
+        this.description = description;
+        this.level = level;
+        this.taskTopic = taskTopic;
+    }
+
+    public ArrayList<TaskTopic> getTaskTopic() {
+        return taskTopic;
+    }
+
+    public void setTaskTopic(ArrayList<TaskTopic> taskTopic) {
+        this.taskTopic = taskTopic;
+    }
+    
+    
 
     public int getId() {
         return id;
@@ -49,6 +76,9 @@ public class Task {
 
     public void setTaskAssined(Staff taskAssined) {
         this.taskAssined = taskAssined;
+    }
+    public void setTaskAssined() {
+        this.taskAssined = null;
     }
 
     public int getParentId() {
@@ -115,5 +145,19 @@ public class Task {
         this.level = level;
     }
     
-    
+@Override
+public String toString() {
+    return "Task{" +
+           "id=" + id +
+           ", name='" + name + '\'' +
+           ", assignedTo=" + (taskAssined != null ? taskAssined.getId(): "null") +
+           ", parentId=" + parentId +
+           ", status=" + (status ? "Đã hoàn thành" : "Chưa hoàn thành") +
+           ", createDate=" + createDate +
+           ", dueDate=" + dueDate +
+           ", completeDate=" + completeDate +
+           ", description='" + description + '\'' +
+           ", level='" + level + '\'' +
+           '}';
+}
 }
