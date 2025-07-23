@@ -62,6 +62,11 @@ public class Staff {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Staff{" + "id=" + id + ", user=" + user + ", position=" + position + ", level=" + level + ", status=" + status + '}';
+    }
     
     
 }
