@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+<web-app version="6.0"
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+
+    <!-- Servlet: opening -->
     <servlet>
         <servlet-name>opening</servlet-name>
         <servlet-class>controller.opening</servlet-class>
@@ -7,6 +12,10 @@
     <servlet-mapping>
         <servlet-name>opening</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!-- Servlet: ManagerDashboardController -->
+    <servlet>
         <servlet-name>ManagerDashboardController</servlet-name>
         <servlet-class>controller.manager.ManagerDashboardController</servlet-class>
     </servlet>
@@ -14,4 +23,5 @@
         <servlet-name>ManagerDashboardController</servlet-name>
         <url-pattern>/ManagerDashboardController</url-pattern>
     </servlet-mapping>
+
 </web-app>
