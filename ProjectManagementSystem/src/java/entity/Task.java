@@ -145,10 +145,10 @@ public class Task {
         this.level = level;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" + "id=" + id + ", taskAssined=" + taskAssined + ", parentId=" + parentId + ", name=" + name + ", status=" + status + ", createDate=" + createDate + ", dueDate=" + dueDate + ", completeDate=" + completeDate + ", description=" + description + ", level=" + level + '}' + "\n";
-    }
+//    @Override
+//    public String toString() {
+//        return "Task{" + "id=" + id + ", taskAssined=" + taskAssined + ", parentId=" + parentId + ", name=" + name + ", status=" + status + ", createDate=" + createDate + ", dueDate=" + dueDate + ", completeDate=" + completeDate + ", description=" + description + ", level=" + level + '}' + "\n";
+//    }
     
 @Override
 public String toString() {

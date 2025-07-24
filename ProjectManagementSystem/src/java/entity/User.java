@@ -96,14 +96,15 @@
         public void setRoleInProject(String roleInProject) {
             this.roleInProject = roleInProject;
         }
-
-
-    }
-
-    @Override
+        
+        @Override
     public String toString() {
         return "User{" + "id=" + id + ", email=" + email + ", fullName=" + fullName + ", password=" + password + ", role=" + role + ", image=" + image + ", status=" + status + ", roleInProject=" + roleInProject + '}';
     }
+
+    }
+
     
     
-}
+    
+
