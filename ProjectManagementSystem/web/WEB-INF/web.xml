@@ -7,5 +7,11 @@
     <servlet-mapping>
         <servlet-name>opening</servlet-name>
         <url-pattern>/</url-pattern>
+        <servlet-name>ManagerDashboardController</servlet-name>
+        <servlet-class>controller.manager.ManagerDashboardController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagerDashboardController</servlet-name>
+        <url-pattern>/ManagerDashboardController</url-pattern>
     </servlet-mapping>
 </web-app>
